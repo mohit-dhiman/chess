@@ -1,7 +1,7 @@
 # chess
-a graphical chess application created using SDL (as a learning project)
+a graphical chess application created using SDL (as a learning project)<br/>
 
-to compile
+to compile<br/>
 gcc -c rook.c -o rook.o<br/>
 gcc -c pawn.c -o pawn.o<br/>
 gcc -c king.c -o king.o<br/>
