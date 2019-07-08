@@ -10,6 +10,6 @@ gcc -c knight.c - o knight.o<br/>
 
 ar rvs libpieces.a rook.o bishop.o knight.o pawn.o king.o<br/>
 
-gcc cfinal8.c libpieces.a -o cfinal8 -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf<br/>
+gcc cfinal8.c libpieces.a -o cfinal -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf<br/>
 
 cfinal.exe file must have been created
