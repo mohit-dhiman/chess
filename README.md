@@ -1,12 +1,14 @@
 # chess
 A GUI based chess application created using SDL (as a learning project)
 
+![Screenshot](chess.png)
 
+# NOTE: 
 
-NOTE: you need SDL2, SDL2-devel, SDL2_ttf, SDL2_ttf-devel, SDL2_image and SDL2_image-devel libraries pre-installed for this program to compile.
+you need SDL2, SDL2-devel, SDL2_ttf, SDL2_ttf-devel, SDL2_image and SDL2_image-devel libraries pre-installed for this program to compile.
 If you are using CentOS, just use yum to install these libraries
 
-To compile:
+# To compile:
 gcc -c rook.c -o rook.o
 
 gcc -c pawn.c -o pawn.o
@@ -25,7 +27,9 @@ cfinal.exe file must have been created
 
 
 
-Instructions:
+# Instructions:
+
+./cfinal
 
 Right click to select a Piece
 
