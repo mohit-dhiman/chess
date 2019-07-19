@@ -122,12 +122,13 @@ void pieceTexCreator(SDL_Renderer* rend){
 	SDL_FreeSurface(piecesurf);
 	
 	piecesurf = (SDL_Surface*)IMG_Load("resources/pieces2/blackpawn.png");
-	for(int i=0;i<8;i++)
+	int i = 0;
+	for(i=0;i<8;i++)
 		bpawntex[i] = SDL_CreateTextureFromSurface(rend, piecesurf);
 	SDL_FreeSurface(piecesurf);
 
 	piecesurf = (SDL_Surface*)IMG_Load("resources/pieces2/whitepawn.png");
-	for(int i=0;i<8;i++)
+	for(i=0;i<8;i++)
 		wpawntex[i] = SDL_CreateTextureFromSurface(rend, piecesurf);
 	SDL_FreeSurface(piecesurf);
 	
@@ -1016,27 +1017,28 @@ int main(int argc, char **argv)
 	
 	//to create logical squares
 	struct state gamestate[12][8];
-	
-	for(int i=0;i<8;i++)
-	{	for(int j=0;j<8;j++)
+
+	int i=0,j=0;	
+	for(i=0;i<8;i++)
+	{	for(j=0;j<8;j++)
 		{	
 			gamestate[i][j].rect = myRect(i, j);
 			gamestate[i][j].occupied = FALSE;
-			gamestate[i][j].piece_pos.color = (int)NULL;
-			gamestate[i][j].piece_pos.name = (int)NULL;
+			gamestate[i][j].piece_pos.color = NULL;
+			gamestate[i][j].piece_pos.name = NULL;
 		}
 	}
 	
 	int wcr = 8, wcc = 0;
 	//white cemetery
 	//SDL_Rect wcemetery[3][6];
-	for(int i=0;i<3;i++)
-		for(int j=0;j<6;j++){
+	for(i=0;i<3;i++)
+		for(j=0;j<6;j++){
 			if(i <2 || (i==2 && j<4)){
 			gamestate[wcr][wcc].rect = myCemRect(i, j);
 			gamestate[wcr][wcc].occupied = FALSE;
-			gamestate[wcr][wcc].piece_pos.color = (int)NULL;
-			gamestate[wcr][wcc].piece_pos.name = (int)NULL;
+			gamestate[wcr][wcc].piece_pos.color = NULL;
+			gamestate[wcr][wcc].piece_pos.name = NULL;
 			if(wcc < 7 && wcr <= 9)wcc++;
 			else{
 				wcc=0;
@@ -1048,13 +1050,13 @@ int main(int argc, char **argv)
 	int bcr = 10, bcc = 0;	
 	//black cemetery
 	//SDL_Rect bcemetery[3][6];
-	for(int i=0;i<3;i++)
-		for(int j=0;j<6;j++){
+	for(i=0;i<3;i++)
+		for(j=0;j<6;j++){
 			if(i >=1 || (i==0 && j<4)){
 			gamestate[bcr][bcc].rect = bmyCemRect(i, j);
 			gamestate[bcr][bcc].occupied = FALSE;
-			gamestate[bcr][bcc].piece_pos.color = (int)NULL;
-			gamestate[bcr][bcc].piece_pos.name = (int)NULL;			
+			gamestate[bcr][bcc].piece_pos.color = NULL;
+			gamestate[bcr][bcc].piece_pos.name = NULL;			
 			if(bcc < 7 && bcr <= 11)bcc++;
 			else{
 				bcc=0;
@@ -1084,8 +1086,8 @@ int main(int argc, char **argv)
 		SDL_RenderCopy(rend, msgtex, NULL, &msgrect);
 		//draw white edges
 		SDL_SetRenderDrawColor(rend, 255, 255, 255, 255);
-		for(int i =0;i<8;i++)
-			for(int j=0;j<8;j++)
+		for(i =0;i<8;i++)
+			for(j=0;j<8;j++)
 				SDL_RenderDrawRect(rend, &gamestate[i][j].rect);
 		
 		//to change color of square when a piece is selected to move
@@ -1136,8 +1138,8 @@ int main(int argc, char **argv)
 		//select the piece
 		if(buttons & SDL_BUTTON(SDL_BUTTON_RIGHT) && right_flag)
 		{	
-			for(int i =0;i<8;i++)
-				for(int j=0;j<8;j++)
+			for(i =0;i<8;i++)
+				for(j=0;j<8;j++)
 					if(SDL_PointInRect(&point, &gamestate[i][j].rect) && gamestate[i][j].occupied == TRUE)
 					{
 						if(movecolor == gamestate[i][j].piece_pos.color)
@@ -1155,8 +1157,8 @@ int main(int argc, char **argv)
 		//select the destination of piece
 		if(buttons & SDL_BUTTON(SDL_BUTTON_LEFT) && left_flag)
 		{		
-			for(int i =0;i<8;i++)
-				for(int j=0;j<8;j++)
+			for(i =0;i<8;i++)
+				for(j=0;j<8;j++)
 					if(SDL_PointInRect(&point, &gamestate[i][j].rect))
 					{
 						lx=i;ly=j;
@@ -1181,8 +1183,8 @@ int main(int argc, char **argv)
 					movecolor = BLACK;
 				
 				gamestate[rx][ry].occupied = FALSE;
-				gamestate[rx][ry].piece_pos.color = (int)NULL;
-				gamestate[rx][ry].piece_pos.name = (int)NULL;
+				gamestate[rx][ry].piece_pos.color = NULL;
+				gamestate[rx][ry].piece_pos.name = NULL;
 				
 				moved = 0;
 			}
@@ -1208,12 +1210,12 @@ int main(int argc, char **argv)
 			moved = 0;
 			movecolor = WHITE;
 			
-			for(int i=0;i<8;i++)
-			{	for(int j=0;j<8;j++)
-				{	
+			for(i=0;i<8;i++)
+			{	for(j=0;j<8;j++)
+				{
 					gamestate[i][j].occupied = FALSE;
-					gamestate[i][j].piece_pos.color = (int)NULL;
-					gamestate[i][j].piece_pos.name = (int)NULL;
+					gamestate[i][j].piece_pos.color = NULL;
+					gamestate[i][j].piece_pos.name = NULL;
 				}
 			}
 			printstate(gamestate);
